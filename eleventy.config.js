@@ -2,7 +2,7 @@ const numeral = require("numeral");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const { execSync } = require('child_process')
 
-module.exports = function(eleventyConfig) {
+module.exports = async function(eleventyConfig) {
 	eleventyConfig.ignores.add("README.md");
 
 	// eleventyConfig.setServerPassthroughCopyBehavior("copy");
@@ -32,7 +32,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
 	// pagefind search plugin
-	eleventyConfig.on('eleventy.after', () => {
+	eleventyConfig.on('eleventy.after', async () => {
 		console.log('[pagefind] Creating search index.');
 		execSync(`npx pagefind --source _site --glob \"[0-9]*/**/*.html\"`, { encoding: 'utf-8' });
   });

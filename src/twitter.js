@@ -1,5 +1,5 @@
 const Sentiment = require("sentiment");
-const { parseDomain } = require("parse-domain");
+const { parseDomain } = await import("parse-domain");
 const dataSource = require("./DataSource");
 const metadata = require("../_data/metadata.js");
 const eleventyImg = require("@11ty/eleventy-img");
